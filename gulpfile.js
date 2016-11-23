@@ -41,12 +41,7 @@ var gulp = require('gulp'),
   // CSS tasks
   gulp.task('css', function () {
       return gulp.src(bases.src+'assets/sass/style.scss')
-      //.pipe(sass({errLogToConsole: true}))
-      // .pipe(sassLint({
-      //     configFile: '.scss-lint.yml'
-      // }))
-      // .pipe(sassLint.format())
-      // .pipe(sassLint.failOnError())
+      .pipe(sass({errLogToConsole: true}))     
       /* Note:- If IE9 supported then use bless for the splitting of large CSS files */
         //.pipe(bless())
       .pipe(gulp.dest(bases.dist+'assets/css'))
@@ -55,16 +50,7 @@ var gulp = require('gulp'),
       .pipe(gulp.dest(bases.dist + 'assets/css'));
   });
 
-  // CSS tasks
-  // gulp.task('scss-lint', function () {
-  //     return gulp.src([bases.src+'**/*.scss'])
-  //     .pipe(scsslint({
-  //       'config': '.scss-lint.yml',
-  //       'reporterOutputFormat': 'Checkstyle',
-  //       'filePipeOutput': 'scssReport.xml'
-  //     }))
-  //     .pipe(gulp.dest('./reports'))
-  // });
+  // CSS Linting tasks
   gulp.task('scss-lint', function() {
     return gulp.src(bases.src+'**/*.scss')
       .pipe(scsslint({
@@ -131,10 +117,6 @@ gulp.task('markup', function(){
         helpers: [
           'node_modules/handlebars-layouts',
         ],
-        // partials: [
-        //   bases.src+'templates/partials/**/*.hbs',
-        //   bases.src+'components/**/*.hbs'
-        // ],
         data: bases.src+'asstes/js/data/**/*.{js,json}'
       })
       .partials(bases.src+'templates/partials/**/*.hbs')
