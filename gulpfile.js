@@ -44,8 +44,10 @@ gulp.task('buildseq', function (cb) {
 /*************
 Main Build
 ***************/
-gulp.task('default', ['buildseq'], function() {
+gulp.task('build', ['buildseq'], function() {
     gulp.watch('src/js/**/*.js', ['scripts']);
     gulp.watch('src/sass/**/*.{sass,scss}', ['sass']);
+});
+gulp.task('default', ['buildseq'], function() {
 });
 
