@@ -1,0 +1,46 @@
+{
+    "name": "gulpstarter",
+    "version": "1.0.0",
+    "description": "Gulp File with basic features - sass, js, lint, ssl",
+    "main": "gulpfile.js",
+    "scripts": {
+        "test": "gulp"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/designerdevil/GulpStarter.git"
+    },
+    "keywords": [
+        "Gulp",
+        "Starter"
+    ],
+    "author": "Gaurav Mall",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/designerdevil/GulpStarter/issues"
+    },
+    "homepage": "https://github.com/designerdevil/GulpStarter#readme",
+    "devDependencies": {
+        "browser-sync": "^2.18.2",
+        "gulp": "^3.9.1",
+        "gulp-accessibility": "^3.0.1",
+        "gulp-autoprefixer": "^4.0.0",
+        "gulp-babel": "^6.1.2",
+        "gulp-bless": "^3.1.0",
+        "gulp-clean": "^0.3.2",
+        "gulp-concat": "^2.6.0",
+        "gulp-exec": "^2.1.3",
+        "gulp-hb": "^5.1.4",
+        "gulp-imagemin": "^3.1.1",
+        "gulp-jshint": "^2.0.0",
+        "gulp-load-plugins": "^1.5.0",
+        "gulp-minify-css": "^1.2.2",
+        "gulp-rename": "^1.2.2",
+        "gulp-sass": "^2.3.2",
+        "gulp-scss-lint": "^0.4.0",
+        "gulp-sequence": "^0.4.6",
+        "gulp-uglify": "^1.5.1",
+        "handlebars-layouts": "^3.1.4",
+        "jshint": "^2.8.0"
+    }
+}
