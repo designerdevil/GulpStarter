@@ -41,6 +41,7 @@
         "gulp-sequence": "^0.4.6",
         "gulp-uglify": "^1.5.1",
         "handlebars-layouts": "^3.1.4",
-        "jshint": "^2.8.0"
+        "jshint": "^2.8.0",
+        "sc5-styleguide": "^1.9.0"
     }
 }

@@ -8,17 +8,21 @@ module.exports = {
             src: './src/assets/sass/',
             dist: '/src/css/'
         },
-        img:{
-        	src: './src/assets/img/',
+        img: {
+            src: './src/assets/img/',
             dist: '/src/'
         },
-        fonts:{
-        	src: './src/assets/fonts/',
+        fonts: {
+            src: './src/assets/fonts/',
             dist: '/src/'
         },
         html: {
-            src: './components/',
+            pagesrc: './src/templates/',
+            compsrc: './src/components/',
             dist: '/'
+        },
+        data: {
+            src: './src/assets/hbdata'
         }
     }
 };
