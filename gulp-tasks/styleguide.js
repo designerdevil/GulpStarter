@@ -10,7 +10,7 @@ module.exports = function(gulp, plugins, config) {
                 title: 'My Styleguide',
                 server: true,
                 rootPath: './styleguide',
-                overviewPath: 'README.md'
+                overviewPath: './dist/all-components.html'
             }))
             .pipe(gulp.dest('./styleguide'));
 

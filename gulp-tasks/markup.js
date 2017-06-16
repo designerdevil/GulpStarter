@@ -4,23 +4,23 @@
 
 module.exports = function(gulp, plugins, config) {
     return function() {
-        
-        gulp.src([config.assetpath.html.pagesrc + 'pages/**/*.hbs'], {})
+
+        gulp.src([config.assetpath.bases.src + 'templates/pages/**/*.hbs'], {})
             .pipe(
                 plugins.hb({
-                    debug: true,
+                    //debug: true,
                     helpers: [
-                        './node_modules/handlebars-layouts',
+                        'node_modules/handlebars-layouts',
                     ],
-                    data: config.assetpath.data.src + 'asstes/js/data/**/*.{js,json}'
+                    data: config.assetpath.bases.src + 'asstes/js/data/**/*.{js,json}'
                 })
-                .partials(config.assetpath.html.pagesrc + 'partials/**/*.hbs')
-                .partials(config.assetpath.html.compsrc + '**/*.hbs')
+                .partials(config.assetpath.bases.src + 'templates/partials/**/*.hbs')
+                .partials(config.assetpath.bases.src + 'components/**/*.hbs')
             )
             .pipe(plugins.rename({
                 extname: ".html"
             }))
-            .pipe(gulp.dest("./dist"));
+            .pipe(gulp.dest('./dist'));
 
     };
 };

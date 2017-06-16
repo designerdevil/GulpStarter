@@ -1,5 +1,9 @@
 module.exports = {
     assetpath: {
+        bases: {
+            src: './src/',
+            dist: './dist/'
+        },
         js: {
             src: './src/assets/js/',
             dist: '/src/js/'
@@ -16,13 +20,8 @@ module.exports = {
             src: './src/assets/fonts/',
             dist: '/src/'
         },
-        html: {
-            pagesrc: './src/templates/',
-            compsrc: './src/components/',
-            dist: '/'
-        },
         data: {
-            src: './src/assets/hbdata'
+            src: './src/assets/data/'
         }
     }
 };

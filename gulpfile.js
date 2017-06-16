@@ -35,58 +35,61 @@ gulp.task('copy:all', ['copy:imgs', 'copy:fonts']);
 
 
 /*************
+Asset Watchers
+***************/
+gulp.task('watcher-script', ['scripts'], function(done) {
+    browserSync.reload();
+    done();
+});
+gulp.task('watcher-sass', ['sass'], function(done) {
+    browserSync.reload();
+    done();
+});
+gulp.task('watcher-markup', ['markup'], function(done) {
+    browserSync.reload();
+    done();
+});
+
+/*************
 Build Modules
 ***************/
-gulp.task('buildseq', function (cb) {
-   gulpSequence('clean')(cb);
-	setTimeout(function(cb2){
-		gulpSequence('scripts', 'sass', 'copy:all', 'markup')(cb2);
-	}, 1000);
+gulp.task('buildseq', function(cb) {
+    gulpSequence('clean')(cb);
+    setTimeout(function(cb2) {
+        gulpSequence('scripts', 'sass', 'markup', 'copy:all')(cb2);
+    }, 1000);
 });
-gulp.task('styleguide', function (cb) {
-   gulpSequence('clean')(cb);
-	setTimeout(function(cb2){
-		gulpSequence('genstyle')(cb2);
-	}, 1000);
+gulp.task('styleguide', function(cb) {
+    // gulpSequence('clean')(cb);
+    setTimeout(function(cb2) {
+        gulpSequence('markup', 'genstyle')(cb2);
+    }, 1000);
 });
 
-
-// gulp.task('styleguide:generate', function() {
-//   return gulp.src('*.scss')
-//     .pipe(styleguide.generate({
-//         title: 'My Styleguide',
-//         server: true,
-//         rootPath: './dist',
-//         overviewPath: 'README.md'
-//       }))
-//     .pipe(gulp.dest('./dist'));
-// });
-
-// gulp.task('styleguide:applystyles', function() {
-//   return gulp.src('main.scss')
-//     .pipe(plugins.sass({
-//       errLogToConsole: true
-//     }))
-//     .pipe(styleguide.applyStyles())
-//     .pipe(gulp.dest('./dist'));
-// });
-
-// gulp.task('watch', ['styleguide'], function() {
-//   // Start watching changes and update styleguide whenever changes are detected
-//   // Styleguide automatically detects existing server instance
-//   gulp.watch(['*.scss'], ['styleguide']);
-// });
-
-// gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles']);
 
 
 /*************
 Main Build
 ***************/
-gulp.task('build', ['buildseq'], function() {
-    gulp.watch('src/js/**/*.js', ['scripts']);
-    gulp.watch('src/sass/**/*.{sass,scss}', ['sass']);
-});
-gulp.task('default', ['buildseq'], function() {
+gulp.task('build', ['buildseq'], function(cb) {
+    gulpSequence('buildseq')(cb);
+    setTimeout(function(cb2) {
+        browserSync.init(null, {
+            server: {
+                baseDir: "dist",
+                index: "index.html"
+            }
+        });
+    }, 1000);
+
+
+    // Build with watcher on assets
+    gulp.watch('src/assets/js/**/*.js', { interval: 500 }, ['watcher-script']);
+    gulp.watch('src/assets/sass/**/*.{sass,scss}', { interval: 500 }, ['watcher-sass']);
+    gulp.watch('src/components/**/*.{hbs}', { interval: 500 }, ['watcher-markup']);
+    gulp.watch('src/templates/**/*.{hbs}', { interval: 500 }, ['watcher-markup']);
+
 });
 
+// Run default build
+gulp.task('default', ['buildseq'], function() {});
