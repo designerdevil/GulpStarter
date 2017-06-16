@@ -1,6 +1,6 @@
-// -------------------------------------
-// For concatinating & minifying scripts
-// -------------------------------------
+// --------------------------
+// For generating styleguide 
+// --------------------------
 
 module.exports = function(gulp, plugins, config) {
     return function() {
