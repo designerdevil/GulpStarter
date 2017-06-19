@@ -5,22 +5,22 @@
 module.exports = function(gulp, plugins, config) {
     return function() {
 
-        gulp.src([bases.src + 'templates/pages/**/*.hbs'], {})
+        gulp.src([config.assetpath.bases.src + 'templates/pages/**/*.hbs'], {})
             .pipe(
-                hb({
-                    debug: true,
+                plugins.hb({
+                    //debug: true,
                     helpers: [
-                        './node_modules/handlebars-layouts',
+                        'node_modules/handlebars-layouts',
                     ],
-                    data: bases.src + 'asstes/js/data/**/*.{js,json}'
+                    data: config.assetpath.bases.src + 'asstes/js/data/**/*.{js,json}'
                 })
-                .partials(bases.src + 'templates/partials/**/*.hbs')
-                .partials(bases.src + 'components/**/*.hbs')
+                .partials(config.assetpath.bases.src + 'templates/partials/**/*.hbs')
+                .partials(config.assetpath.bases.src + 'components/**/*.hbs')
             )
-            .pipe(rename({
+            .pipe(plugins.rename({
                 extname: ".html"
             }))
-            .pipe(gulp.dest(bases.dist));
+            .pipe(gulp.dest('./dist'));
 
     };
 };

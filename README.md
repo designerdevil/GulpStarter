@@ -15,4 +15,5 @@ To start gulp with cleanup and watch
 ```sh
 $ gulp build
 ```
- 
+
+Currently sc5 styleguide is WIP. will update once thats done. Rest is Rock on!!

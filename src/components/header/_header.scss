@@ -1,0 +1,11 @@
+header{
+    background: red;
+    a{
+        color: yellow;
+        background: black;
+        &:hover{
+            background: white;
+            color: black;
+        }
+    }
+}
