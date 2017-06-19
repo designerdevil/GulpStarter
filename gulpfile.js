@@ -2,9 +2,7 @@ var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var plugins = require('gulp-load-plugins')();
 var gulpSequence = plugins.sequence;
-
 plugins.styleguide = require('sc5-styleguide');
-// var gulpSequence = require('gulp-sequence');
 
 
 /********************
